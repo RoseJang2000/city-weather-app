@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* background-image: url('https://wallpapershome.com/images/pages/pic_h/23277.jpg'); */
+  background-image: url('https://free4kwallpapers.com/uploads/originals/2015/07/27/nature-of-switzerland.jpg');
+  background-size: cover;
+}
+
+@media (max-width: 1024px) {
+  /* ... */
+}
+@media (max-width: 768px) {
+  /* ... */
+}
+@media (max-width: 480px) {
+  /* ... */
+}
