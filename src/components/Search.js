@@ -1,5 +1,5 @@
 import './Search.css';
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch, FiX } from 'react-icons/fi';
 import { useState } from 'react';
 
 const Search = ({ setUserLocation }) => {
@@ -12,6 +12,10 @@ const Search = ({ setUserLocation }) => {
     setInputValue(value);
   };
 
+  const onClear = () => {
+    setInputValue('');
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
     setUserLocation(inputValue);
@@ -21,10 +25,16 @@ const Search = ({ setUserLocation }) => {
     <form className="weather_search" onSubmit={onSubmit}>
       <input
         type="text"
-        placeholder="Please enter location"
+        placeholder="ex) London, New York, Berlin,..."
         className="search_input"
+        value={inputValue}
         onChange={onChange}
       />
+      {inputValue && (
+        <span className="clear_icon" onClick={onClear}>
+          <FiX />
+        </span>
+      )}
       <span className="search_icon" onClick={onSubmit}>
         <FiSearch />
       </span>
