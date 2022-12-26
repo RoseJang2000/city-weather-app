@@ -43,6 +43,9 @@
 .weather_description_icon {
   font-size: 2rem;
   margin-right: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .weather_description * h3 {
@@ -63,5 +66,68 @@
   /* ... */
 }
 @media (max-width: 480px) {
-  /* ... */
+  .App {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(222, 222, 222);
+  }
+
+  .weather_container {
+    width: 20rem;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    justify-content: space-around;
+  }
+
+  .weather_location {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .weather_degrees {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  .weather_description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .weather_description_head {
+    display: flex;
+    align-items: center;
+  }
+
+  .weather_description_icon {
+    font-size: 2rem;
+    margin-right: 0.4rem;
+  }
+
+  .weather_description * h3 {
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-bottom: 0.7rem;
+  }
+
+  .weather_date_wrapper {
+    width: 100%;
+    border-top: 1px solid lightgray;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .weather_date {
+    font-size: 1rem;
+    font-weight: normal;
+  }
 }

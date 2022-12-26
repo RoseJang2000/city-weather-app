@@ -2,6 +2,7 @@ import './App.css';
 import Search from './components/Search';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import TimezoneDate from './components/Date';
 
 const App = () => {
   const [degrees, setDegrees] = useState(null);
@@ -13,6 +14,7 @@ const App = () => {
   const [country, setCountry] = useState('');
   const [userLocation, setUserLocation] = useState('Seoul');
   const [timezone, setTimezone] = useState(null);
+  const [imgUrl, setImgUrl] = useState('');
 
   const fetchData = async () => {
     try {
@@ -36,41 +38,27 @@ const App = () => {
     }
   };
 
+  const fetchImg = async () => {
+    fetch(`https://source.unsplash.com/featured/?${userLocation}`).then((resp) => {
+      setImgUrl(resp.url);
+    });
+  };
+
   useEffect(() => {
+    fetchImg();
     fetchData();
   }, [userLocation]);
 
-  // ! 검색 지역의 시간 구하기
-  const getWorldTime = (tzOffset) => {
-    let now = new Date();
-    let tz = now.getTime() + now.getTimezoneOffset() * 60000 + tzOffset * 3600000;
-    now.setTime(tz);
-    let s =
-      leadingZeros(now.getFullYear(), 4) +
-      '-' +
-      leadingZeros(now.getMonth() + 1, 2) +
-      '-' +
-      leadingZeros(now.getDate(), 2) +
-      ' ' +
-      leadingZeros(now.getHours(), 2) +
-      ':' +
-      leadingZeros(now.getMinutes(), 2) +
-      ':' +
-      leadingZeros(now.getSeconds(), 2);
-    return s;
-  };
-
-  const leadingZeros = (n, digits) => {
-    var zero = '';
-    n = n.toString();
-    if (n.length < digits) {
-      for (let i = 0; i < digits - n.length; i++) zero += '0';
-    }
-    return zero + n;
-  };
-
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        backgroundImage: `url(${imgUrl})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }}
+    >
       <div className="weather_container">
         <Search setUserLocation={setUserLocation} />
         <div className="weather_location">
@@ -90,10 +78,7 @@ const App = () => {
             <h3>Humidity: {humidity}%</h3>
             <h3>Wind speed: {wind} m/s</h3>
           </div>
-          <div>
-            <h3>{country}</h3>
-            <h3 className="weather_date">{getWorldTime(timezone / 3600)}</h3>
-          </div>
+          <TimezoneDate country={country} timezone={timezone} />
         </div>
       </div>
     </div>

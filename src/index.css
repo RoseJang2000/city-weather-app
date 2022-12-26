@@ -4,13 +4,25 @@
   padding: 0;
 }
 
+body,
+html,
+.root {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 body {
-  margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  /* background-image: url('https://wallpapershome.com/images/pages/pic_h/23277.jpg'); */
+  /* background-image: url('https://source.unsplash.com/featured/?nature'); */
   background-image: url('https://free4kwallpapers.com/uploads/originals/2015/07/27/nature-of-switzerland.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media (max-width: 1024px) {
