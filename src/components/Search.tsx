@@ -1,11 +1,16 @@
+import React from 'react';
 import './Search.css';
 import { FiSearch, FiX } from 'react-icons/fi';
 import { useState } from 'react';
 
-const Search = ({ setUserLocation }) => {
+const Search = ({
+  setUserLocation,
+}: {
+  setUserLocation: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const [inputValue, setInputValue] = useState('');
 
-  const onChange = (event) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = event;
@@ -16,7 +21,9 @@ const Search = ({ setUserLocation }) => {
     setInputValue('');
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = (
+    event: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLElement>
+  ) => {
     event.preventDefault();
     setUserLocation(inputValue);
   };
